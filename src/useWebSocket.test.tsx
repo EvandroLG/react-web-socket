@@ -1,25 +1,25 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { WebSocketProvider } from './WebSocketContext';
-import { useWebSocketContext } from './useWebSocketContext';
+import { WebSocketProvider } from './WebSocketProvider';
+import { useWebSocket } from './useWebSocket';
 
 console.error = jest.fn();
 
-describe('useWebSocketContext', () => {
+describe('useWebSocket', () => {
   test('throw an error when used outside of WebSocketProvider', () => {
     const Component = () => {
-      useWebSocketContext();
+      useWebSocket();
       return null;
     };
 
     expect(() => render(<Component />)).toThrow(
-      'useWebSocketContext must be used within a WebSocketProvider'
+      'useWebSocket must be used within a WebSocketProvider'
     );
   });
 
   test('returns the context when used within WebSocketProvider', () => {
     const Component = () => {
-      const context = useWebSocketContext();
+      const context = useWebSocket();
       expect(context).toBeDefined();
       expect(context.sendMessage).toBeDefined();
       expect(context.status).toBeDefined();

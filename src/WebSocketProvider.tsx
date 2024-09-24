@@ -1,15 +1,16 @@
 import React, { createContext, useRef, useEffect, useState } from 'react';
-import { WebSocketContextType, WebSocketMessage, WebSocketProviderProps, WebSocketStatus } from './types';
+import {
+  WebSocketContextType,
+  WebSocketMessage,
+  WebSocketProviderProps,
+  WebSocketStatus,
+} from './types';
 
-export const WebSocketContext = createContext<WebSocketContextType | undefined>(
-  undefined
-);
+export const WebSocketContext = createContext<WebSocketContextType | undefined>(undefined);
 
 export function WebSocketProvider({ url, children }: WebSocketProviderProps) {
   const [error, setError] = useState<Error | null>(null);
-  const [status, setStatus] = useState<WebSocketStatus>(
-    WebSocketStatus.CONNECTING
-  );
+  const [status, setStatus] = useState<WebSocketStatus>(WebSocketStatus.CONNECTING);
   const [lastMessage, setLastMessage] = useState<WebSocketMessage | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
 
