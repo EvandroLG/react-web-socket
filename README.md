@@ -15,7 +15,7 @@
 To install the package, run:
 
 ```bash
-npm install react-web-socket
+npm install @evandrolg/react-web-socket
 ```
 
 ## Usage
