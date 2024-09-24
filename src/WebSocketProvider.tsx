@@ -6,8 +6,28 @@ import {
   WebSocketStatus,
 } from './types';
 
+/**
+ * Context for managing WebSocket connections and providing WebSocket-related data and methods.
+ */
 export const WebSocketContext = createContext<WebSocketContextType | undefined>(undefined);
 
+/**
+ * WebSocketProvider component that manages a WebSocket connection and provides the
+ * connection state, last received message, and methods to send messages via WebSocket.
+ *
+ * @param props - The props for the WebSocketProvider component.
+ * 
+ * @example
+ * ```tsx
+ * <WebSocketProvider url="wss://example.com">
+ *   <YourComponent />
+ * </WebSocketProvider>
+ * ```
+ *
+ * @remarks
+ * The WebSocketProvider automatically connects to the given WebSocket URL and manages
+ * connection status, error handling, and message transmission.
+ */
 export function WebSocketProvider({ url, children }: WebSocketProviderProps) {
   const [error, setError] = useState<Error | null>(null);
   const [status, setStatus] = useState<WebSocketStatus>(WebSocketStatus.CONNECTING);
@@ -15,16 +35,13 @@ export function WebSocketProvider({ url, children }: WebSocketProviderProps) {
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    console.log('useEffect: Setting up WebSocket connection');
     const ws = new WebSocket(url);
 
     ws.onopen = () => {
-      console.log('WebSocket connected');
       setStatus(WebSocketStatus.OPEN);
     };
 
     ws.onmessage = (e) => {
-      console.log('WebSocket message:', e.data);
       setLastMessage(JSON.parse(e.data));
     };
 
@@ -35,18 +52,21 @@ export function WebSocketProvider({ url, children }: WebSocketProviderProps) {
     };
 
     ws.onclose = () => {
-      console.log('WebSocket disconnected');
       setStatus(WebSocketStatus.CLOSED);
     };
 
     wsRef.current = ws;
 
     return () => {
-      console.log('Cleaning up WebSocket connection');
       ws.close();
     };
   }, [url]);
 
+  /**
+   * Sends a message through the WebSocket connection.
+   *
+   * @param message - The message to be sent.
+   */
   const sendMessage = (message: object) => {
     if (wsRef.current?.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify(message));

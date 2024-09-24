@@ -1,17 +1,17 @@
 {
-  "name": "react-websocket",
+  "name": "react-web-socket",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "source": "src/index.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}'"
   },
-  "keywords": [],
+  "keywords": ["websocket", "react", "real-time"],
   "author": "evandrolg (Evandro Leopoldino Goncalves)",
   "license": "MIT",
   "peerDependencies": {
