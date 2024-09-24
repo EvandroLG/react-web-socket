@@ -16,7 +16,7 @@ export const WebSocketContext = createContext<WebSocketContextType | undefined>(
  * connection state, last received message, and methods to send messages via WebSocket.
  *
  * @param props - The props for the WebSocketProvider component.
- * 
+ *
  * @example
  * ```tsx
  * <WebSocketProvider url="wss://example.com">

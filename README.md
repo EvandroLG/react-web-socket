@@ -80,6 +80,7 @@ export default YourComponent;
 The `WebSocketProvider` component provides the WebSocket context to your application.
 
 #### Props:
+
 - `url` (string, required): The WebSocket server URL.
 - `children` (ReactNode, required): The child components that will have access to the WebSocket context.
 
@@ -88,6 +89,7 @@ The `WebSocketProvider` component provides the WebSocket context to your applica
 The `useWebSocket` hook gives access to WebSocket functionality.
 
 #### Returns:
+
 - `lastMessage`: The most recent WebSocket message received (parsed as JSON).
 - `sendMessage(message: object)`: Sends a JSON message through the WebSocket connection.
 - `status`: The current status of the WebSocket connection (`CONNECTING`, `OPEN`, or `CLOSED`).
@@ -96,6 +98,7 @@ The `useWebSocket` hook gives access to WebSocket functionality.
 ## WebSocket Status Enum
 
 The `WebSocketStatus` enum can have the following values:
+
 - `CONNECTING`: The WebSocket connection is in the process of being established.
 - `OPEN`: The WebSocket connection is open and ready to communicate.
 - `CLOSED`: The WebSocket connection is closed.

@@ -3,7 +3,7 @@ import { WebSocketContext } from './WebSocketProvider';
 
 /**
  * Custom hook to access the WebSocket context.
- * 
+ *
  * This hook provides access to the WebSocket connection state, the last received message,
  * the sendMessage function, and any errors related to the WebSocket connection.
  *
@@ -12,7 +12,7 @@ import { WebSocketContext } from './WebSocketProvider';
  * - `sendMessage`: A function to send messages through the WebSocket.
  * - `status`: The current status of the WebSocket connection (connecting, open, or closed).
  * - `error`: Any error encountered during the WebSocket connection lifecycle.
- * 
+ *
  * @throws Will throw an error if used outside of a `WebSocketProvider`.
  *
  * @example

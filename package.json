@@ -3,15 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "source": "src/index.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
+  "modern": "dist/index.modern.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
+    "build-only": "rm -rf dist && microbundle --jsx React.createElement --tsconfig tsconfig.json",
+    "build": "npm run test && npm run lint && npm run build-only && npm run size",
+    "size": "npm run build-only && size-limit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}'"
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier src/ --write './**/*.{js,jsx,ts,tsx,md,json}'"
   },
-  "keywords": ["websocket", "react", "real-time"],
+  "keywords": [
+    "websocket",
+    "react",
+    "real-time"
+  ],
   "author": "evandrolg (Evandro Leopoldino Goncalves)",
   "license": "MIT",
   "peerDependencies": {
@@ -20,6 +33,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.0",
+    "@size-limit/preset-small-lib": "^11.1.5",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.13",
@@ -37,9 +51,29 @@
     "globals": "^15.9.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "microbundle": "^0.15.1",
     "prettier": "^3.3.3",
+    "size-limit": "^11.1.5",
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.6.0"
-  }
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.cjs",
+      "limit": "650 B"
+    },
+    {
+      "path": "dist/index.module.js",
+      "limit": "800 B"
+    },
+    {
+      "path": "dist/index.umd.js",
+      "limit": "700 B"
+    },
+    {
+      "path": "dist/index.modern.js",
+      "limit": "750 B"
+    }
+  ]
 }
