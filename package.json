@@ -1,6 +1,6 @@
 {
   "name": "@evandrolg/react-web-socket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight WebSocket provider for React.",
   "source": "src/index.ts",
   "main": "dist/index.cjs",
