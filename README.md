@@ -1,4 +1,4 @@
-# react-web-socket
+# react-web-socket &middot; [![license](https://badgen.now.sh/badge/license/MIT)](./LICENSE)
 
 **react-web-socket** is a lightweight React provider that integrates WebSocket functionality into your React application, allowing you to easily manage WebSocket connections, send and receive messages, and track connection status using React hooks and context.
 
